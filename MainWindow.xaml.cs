@@ -25,7 +25,7 @@ namespace CW6_Databases_WPF
         public MainWindow()
         {
             InitializeComponent();
-            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\EmployeeDB.accdb");
+             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\EmployeeDB.accdb");
         }
 
         private void AssetButton_Click(object sender, RoutedEventArgs e)
@@ -35,11 +35,12 @@ namespace CW6_Databases_WPF
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
             string data = "";
+            TextArea.Text = "";
             while(read.Read())
             {
                 data += read[0].ToString() + "\n";
-                TextArea.Text += data;
             }
+            TextArea.Text = data;
         }
     }
 }
