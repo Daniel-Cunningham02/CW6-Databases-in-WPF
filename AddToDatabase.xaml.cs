@@ -39,17 +39,30 @@ namespace CW6_Databases_WPF
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if(EmployeeID.Text != null && EmployeeID.Text !="EmployeeID:")
+            if(EmployeeID.Text != null && EmployeeID.Text != "EmployeeID:")
             {
                 if(FirstName.Text != null && LastName.Text != null)
                 {
                     if(isAsset)
                     {
-                        string query = "insert into Assets (EmployeeID, ItemID, ) values (";
+                        string query = "insert into Assets (EmployeeID, AssetID, Description) values (@ID, @FN, @LN)";
+                        OleDbCommand cmd = new OleDbCommand(query, cn);
+                        cn.Open();
+                        cmd.Parameters.AddWithValue("@ID", Int32.Parse(EmployeeID.Text));
+                        cmd.Parameters.AddWithValue("@FN", Int32.Parse(FirstName.Text));
+                        cmd.Parameters.AddWithValue("@LN", LastName.Text);
+                        cmd.ExecuteNonQuery();
+                        
                     }
                     else if(!isAsset)
                     {
-
+                        string query = "insert into Employees (EmployeeID, LastName, FirstName) values (@ID, @LN, @FN)";
+                        OleDbCommand cmd = new OleDbCommand(query, cn);
+                        cn.Open();
+                        cmd.Parameters.AddWithValue("@ID", Int32.Parse(EmployeeID.Text));
+                        cmd.Parameters.AddWithValue("@LN", LastName.Text);
+                        cmd.Parameters.AddWithValue("@FN", FirstName.Text);
+                        cmd.ExecuteNonQuery();
                     }
                 }
             }

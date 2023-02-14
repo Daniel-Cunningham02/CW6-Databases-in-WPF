@@ -31,7 +31,6 @@ namespace CW6_Databases_WPF
         private void AssetButton_Click(object sender, RoutedEventArgs e)
         {
             string query = "select * from Assets";
-            string query2 = "select * from Employees";
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
@@ -64,12 +63,14 @@ namespace CW6_Databases_WPF
 
         private void AddAsset_Click(object sender, RoutedEventArgs e)
         {
-
+            AddToDatabase add = new AddToDatabase(true);
+            add.Show();
         }
 
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            AddToDatabase add = new AddToDatabase(false);
+            add.Show();
         }
     }
 }
