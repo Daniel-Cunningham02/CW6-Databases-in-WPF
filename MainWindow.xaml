@@ -9,7 +9,10 @@
     <Grid>
         <TextBlock x:Name="TextArea" HorizontalAlignment="Left" Height="289" Margin="30,10,0,0" TextWrapping="Wrap" Text="Holder" VerticalAlignment="Top" Width="698"/>
         <Button x:Name="AssetButton" Content="See Assets" HorizontalAlignment="Left" Height="22" Margin="30,327,0,0" VerticalAlignment="Top" Width="76" Click="AssetButton_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="22" Margin="157,327,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="EmployeeButton" Content="See Employees" HorizontalAlignment="Left" Height="22" Margin="157,327,0,0" VerticalAlignment="Top" Width="87" Click="EmployeeButton_Click"/>
+        <Button x:Name="AddAssetButton" Content="Add Asset" HorizontalAlignment="Left" Height="22" Margin="30,369,0,0" VerticalAlignment="Top" Width="76" Click="AddAsset_Click"/>
+        <Button x:Name="AddEmployeeButton" Content="Add Employee" HorizontalAlignment="Left" Height="22" Margin="157,369,0,0" VerticalAlignment="Top" Width="87" Click="AddEmployee_Click"/>
+
 
     </Grid>
 </Window>

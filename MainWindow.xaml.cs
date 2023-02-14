@@ -31,6 +31,7 @@ namespace CW6_Databases_WPF
         private void AssetButton_Click(object sender, RoutedEventArgs e)
         {
             string query = "select * from Assets";
+            string query2 = "select * from Employees";
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
@@ -38,9 +39,37 @@ namespace CW6_Databases_WPF
             TextArea.Text = "";
             while(read.Read())
             {
-                data += read[0].ToString() + "\n";
+                data += read[0].ToString() + "\t" + read[1].ToString() + "\t" + read[2].ToString() + "\n";
             }
             TextArea.Text = data;
+            cn.Close();
+        }
+
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "select * from Employees";
+            OleDbCommand cmd = new OleDbCommand(query, cn);
+            cn.Open();
+            OleDbDataReader read = cmd.ExecuteReader();
+            string data = "";
+            TextArea.Text = "";
+            while(read.Read())
+            {
+                data += read[0].ToString() + "\t" + read[1].ToString() + "\t" + read[2].ToString() + "\n";
+            }
+            TextArea.Text = data;
+            cn.Close();
+        }
+
+
+        private void AddAsset_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
