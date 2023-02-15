@@ -54,7 +54,7 @@ namespace CW6_Databases_WPF
             TextArea.Text = "";
             while(read.Read())
             {
-                data += read[0].ToString() + "\t" + read[1].ToString() + "\t" + read[2].ToString() + "\n";
+                data += read[0].ToString() + "\t" + read[1].ToString() + "\t\t" + read[2].ToString() + "\n";
             }
             TextArea.Text = data;
             cn.Close();
@@ -63,13 +63,13 @@ namespace CW6_Databases_WPF
 
         private void AddAsset_Click(object sender, RoutedEventArgs e)
         {
-            AddToDatabase add = new AddToDatabase(true);
+            AddToDatabase add = new AddToDatabase();
             add.Show();
         }
 
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            AddToDatabase add = new AddToDatabase(false);
+            AddToDatabase add = new AddToDatabase();
             add.Show();
         }
     }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Name: Daniel Cunningham
+ * Date: 2/14/2023
+ * Creates a window which allows the user to enter in certain data to add to the database.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,18 +25,9 @@ namespace CW6_Databases_WPF
     public partial class AddToDatabase : Window
     {
         OleDbConnection cn;
-        bool isAsset = false;
-        public AddToDatabase(bool isAsset)
+        public AddToDatabase()
         {
             InitializeComponent();
-            this.isAsset = isAsset;
-            if(isAsset)
-            {
-                FirstNameText.Text = "ItemID";
-                FirstName.Text = "ItemID";
-                LastNameText.Text = "Item";
-                LastName.Text = "Key";
-            }
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\EmployeeDB.accdb");
 
         }
@@ -41,30 +36,18 @@ namespace CW6_Databases_WPF
         {
             if(EmployeeID.Text != null && EmployeeID.Text != "EmployeeID:")
             {
-                if(FirstName.Text != null && LastName.Text != null)
-                {
-                    if(isAsset)
-                    {
-                        string query = "insert into Assets (EmployeeID, AssetID, Description) values (@ID, @FN, @LN)";
-                        OleDbCommand cmd = new OleDbCommand(query, cn);
-                        cn.Open();
-                        cmd.Parameters.AddWithValue("@ID", Int32.Parse(EmployeeID.Text));
-                        cmd.Parameters.AddWithValue("@FN", Int32.Parse(FirstName.Text));
-                        cmd.Parameters.AddWithValue("@LN", LastName.Text);
-                        cmd.ExecuteNonQuery();
+                    
+                    string query = "insert into Employees (EmployeeID, LastName, FirstName) values (@ID, @LN, @FN)";
+                    OleDbCommand cmd = new OleDbCommand(query, cn);
+                    cn.Open();
+                    cmd.Parameters.AddWithValue("@ID", Int32.Parse(EmployeeID.Text));
+                    cmd.Parameters.AddWithValue("@LN", LastName.Text);
+                    cmd.Parameters.AddWithValue("@FN", FirstName.Text);
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                    this.Close();
                         
-                    }
-                    else if(!isAsset)
-                    {
-                        string query = "insert into Employees (EmployeeID, LastName, FirstName) values (@ID, @LN, @FN)";
-                        OleDbCommand cmd = new OleDbCommand(query, cn);
-                        cn.Open();
-                        cmd.Parameters.AddWithValue("@ID", Int32.Parse(EmployeeID.Text));
-                        cmd.Parameters.AddWithValue("@LN", LastName.Text);
-                        cmd.Parameters.AddWithValue("@FN", FirstName.Text);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                
             }
         }
     }
