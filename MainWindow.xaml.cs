@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Name: Daniel Cunningham
+ * Date: 2/14/2023
+ * Creates button click events that allows the user to display a database and add to it.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
